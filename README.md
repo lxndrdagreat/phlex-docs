@@ -1,6 +1,8 @@
 # phlex-docs
 Site and documentation for [Phlex](https://github.com/lxndrdagreat/phlex).
 
+[Read the documentation here.](https://phlex.io)
+
 # Building
 
 Get [Phlex](https://github.com/lxndrdagreat/phlex).

@@ -1,0 +1,12 @@
+==>context
+template: update
+title: Phlex 1.0 released!
+index: 0
+<==context
+
+# Phlex 1.0 Released!
+
+There is a long road ahead, but Phlex is now available via PyPI!
+
+Check out the [documentation](https://phlex.io) or go to the 
+[GitHub repo](https://github.com/lxndrdagreat/phlex) to learn more.

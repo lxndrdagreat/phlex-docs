@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h1>Update Log</h1>
+
+{% for update in posts %}
+    <div class="update">
+        <h2><a href="{{update.href}}">{{ update.title }}</a></h2>
+    </div>
+{% endfor %}
+
+{% endblock %}
