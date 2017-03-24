@@ -8,7 +8,7 @@
         margin: 0;
         box-sizing: border-box;
         color: #333;
-        background-color: #efefef;
+        background-color: #ffffff;
         font-family: Helvetica, sans-serif;
         width: 100%;
     }
@@ -32,14 +32,107 @@
         max-width: 960px;
         margin: 0 auto;
     }
+
+    pre {
+        background-color: #222222;
+        color: #ddd;
+        padding: 0;
+        padding-left: 1em;
+        border-left: 2px solid #111187;
+        box-sizing: border-box;
+        overflow: auto;
+    }
     </style>
 </head>
 <body>
     <page>
     
 <h1>Phlex</h1>
-<p>Thanks for your interesting in Phlex! Documentation is coming soon!</p>
+<p>Thanks for your interesting in Phlex! This documentation is in the very early
+stages, so please be patient while it is being worked on.</p>
 <p>For now, check out the repo <a href="https://github.com/lxndrdagreat/phlex">here</a>.</p>
+<h2>What is Phlex?</h2>
+<p>Phlex is a tool that takes files and generates static HTML pages from them.</p>
+<p><em>So... it's just another static site generator?</em></p>
+<p>Yes; and no. There are lots of great tools out there for generating static
+sites; many of them work similarly to Phlex.</p>
+<p><em>Why make Phlex, then?</em></p>
+<p>The biggest reason we made Phlex was to solve a single hurdle we were having:
+<em><strong>getting data into our static HTML in a meaningfull way</strong></em>.</p>
+<p>The tools that we were looking at focused at doing one thing exceptionally
+well: take simple text (usually using Markdown) and make it look nice on
+a page.</p>
+<p>This was nice, but we needed a way to get sets of data onto a page with
+as minimal effort as possible. We wanted to be able to do it as easily
+as if you were writing a blog post in Markdown.</p>
+<h2>How Does it Work?</h2>
+<p>Written in Python, Phlex is a commandline tool that takes files, runs them
+through a parser and template engine, and outputs them to a directory in
+a structure that is similar to how they were found.</p>
+<p><strong>Here is an example blog page:</strong></p>
+<pre><code>==&gt;context
+template: post
+title: I started a blog about HTML
+&lt;==context
+
+# I started a blog about HTML
+
+I will probably write this post and maybe one or two more posts, and then
+I will forget to write posts for quite some time.
+
+Then, after a few months of silence, I will write several more posts during
+an extremely short amount of time.
+
+Soon, my blog will go silent _once again_.
+</code></pre>
+<p>That is a very simple page, and you will probably notice its similarities to
+other Markdown-based generators.</p>
+<p>The information inside of the <code>context</code> block is some basic data, and everything
+else outside of that block is our page's text, written in Markdown. The default
+parser takes that file, turns everything inside the <code>context</code> block into data
+via YAML, which can then be used by the Jinja template engine; the rest of the
+page is rendered out using Markdown.</p>
+<h2>Adding more data</h2>
+<p>So far, Phlex hasn't done anything different. Now, let's look at an example
+of more powerful data, using YAML inside of the <code>context</code> block.</p>
+<p><strong>Our data file, called 'posts.yd'</strong></p>
+<pre><code>==&gt;context
+template: blog_roll
+title: All of my posts
+posts: datafrom=&gt;(posts)
+&lt;==context
+</code></pre>
+<p>Notice something? We didn't even bother doing any Markdown text for the page's
+body. Now, imagine that this blog about HTML was actually very active and has
+a hundred (<em>or more!</em>) posts in a subfolder called "posts".</p>
+<p><strong>Example project folder structure:</strong></p>
+<pre><code>my-html-blog/
+    index.yd
+    posts.yd
+    posts/
+        post01.yd
+        ...
+        post101.yd
+</code></pre>
+<p>When Phlex goes to parse the <code>posts.yd</code> file, it will find the <code>datafrom</code>
+command in the <code>context</code> block. It will do a search for the "posts" folder
+and will collect the page data from the pages inside that folder, storing
+that information as an array in the <code>posts</code> variable.</p>
+<p>Then, the template engine could do something like the following:</p>
+<pre><code>&lt;h1&gt;This is my blog about HTML!&lt;/h1&gt;
+
+&lt;h2&gt;Here are the posts I have written!&lt;/h2&gt;
+
+{% for post in posts %}
+    &lt;div class="post"&gt;
+        &lt;a href="{{ post.href }}"&gt;{{ post.title }}&lt;/a&gt;
+    &lt;/div&gt;
+{% endfor %}
+</code></pre>
+<p>If you are unfamiliar with Jinja2's templating, you can read the documentation
+<a href="http://jinja.pocoo.org/docs/2.9/">here</a>.</p>
+<h2>Update Log</h2>
+<p>Check out the updates <a href="updates.html">here</a></p>
 
 
     </page>

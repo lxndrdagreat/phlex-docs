@@ -5,6 +5,112 @@ title: Welcome to Phlex
 
 # Phlex
 
-Thanks for your interesting in Phlex! Documentation is coming soon!
+Thanks for your interesting in Phlex! This documentation is in the very early
+stages, so please be patient while it is being worked on.
 
 For now, check out the repo [here](https://github.com/lxndrdagreat/phlex).
+
+## What is Phlex?
+
+Phlex is a tool that takes files and generates static HTML pages from them.
+
+_So... it's just another static site generator?_
+
+Yes; and no. There are lots of great tools out there for generating static
+sites; many of them work similarly to Phlex.
+
+_Why make Phlex, then?_
+
+The biggest reason we made Phlex was to solve a single hurdle we were having:
+_**getting data into our static HTML in a meaningfull way**_.
+
+The tools that we were looking at focused at doing one thing exceptionally
+well: take simple text (usually using Markdown) and make it look nice on
+a page.
+
+This was nice, but we needed a way to get sets of data onto a page with
+as minimal effort as possible. We wanted to be able to do it as easily
+as if you were writing a blog post in Markdown.
+
+## How Does it Work?
+
+Written in Python, Phlex is a commandline tool that takes files, runs them
+through a parser and template engine, and outputs them to a directory in
+a structure that is similar to how they were found.
+
+**Here is an example blog page:**
+
+    ==>context
+    template: post
+    title: I started a blog about HTML
+    <==context
+
+    # I started a blog about HTML
+
+    I will probably write this post and maybe one or two more posts, and then
+    I will forget to write posts for quite some time.
+
+    Then, after a few months of silence, I will write several more posts during
+    an extremely short amount of time.
+
+    Soon, my blog will go silent _once again_.
+
+That is a very simple page, and you will probably notice its similarities to
+other Markdown-based generators.
+
+The information inside of the `context` block is some basic data, and everything
+else outside of that block is our page's text, written in Markdown. The default
+parser takes that file, turns everything inside the `context` block into data
+via YAML, which can then be used by the Jinja template engine; the rest of the
+page is rendered out using Markdown.
+
+## Adding more data
+
+So far, Phlex hasn't done anything different. Now, let's look at an example
+of more powerful data, using YAML inside of the `context` block.
+
+**Our data file, called 'posts.yd'**
+
+    ==>context
+    template: blog_roll
+    title: All of my posts
+    posts: datafrom=>(posts)
+    <==context
+
+Notice something? We didn't even bother doing any Markdown text for the page's
+body. Now, imagine that this blog about HTML was actually very active and has
+a hundred (_or more!_) posts in a subfolder called "posts".
+
+**Example project folder structure:**
+
+    my-html-blog/
+        index.yd
+        posts.yd
+        posts/
+            post01.yd
+            ...
+            post101.yd
+
+When Phlex goes to parse the `posts.yd` file, it will find the `datafrom`
+command in the `context` block. It will do a search for the "posts" folder
+and will collect the page data from the pages inside that folder, storing
+that information as an array in the `posts` variable.
+
+Then, the template engine could do something like the following:
+
+    <h1>This is my blog about HTML!</h1>
+
+    <h2>Here are the posts I have written!</h2>
+    
+    {% for post in posts %}
+        <div class="post">
+            <a href="{{ post.href }}">{{ post.title }}</a>
+        </div>
+    {% endfor %}
+
+If you are unfamiliar with Jinja2's templating, you can read the documentation
+[here](http://jinja.pocoo.org/docs/2.9/).
+
+## Update Log
+
+Check out the updates [here](updates.html)
