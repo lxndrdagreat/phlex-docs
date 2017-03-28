@@ -5,6 +5,10 @@ title: Get Phlex
 
 # Get Phlex
 
+## Requirements
+
+Phlex requires Python 3.
+
 ## From PyPi
 
 To get the latest version of Phlex, use `pip`:
