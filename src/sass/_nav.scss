@@ -1,0 +1,35 @@
+nav {
+    display: block;
+    background-color: #333;
+    color: #ddd;
+    position: fixed;
+    width: 100%;
+}
+
+.nav-top {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1em;
+
+    @include tablet_up {
+        padding: 1em 0;
+    }
+    
+
+    li {
+        color: inherit;
+        display: inline;
+        margin-right: 1.4em;
+    }
+
+    a {
+        color: inherit;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}

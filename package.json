@@ -1,0 +1,17 @@
+{
+  "name": "phlex-docs",
+  "version": "1.0.0",
+  "description": "Documentation and site for Phlex",
+  "main": "index.js",
+  "repository": "https://github.com/lxndrdagreat/phlex-docs.git",
+  "author": "Dan Alexander <lxndrdagreat@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-run": "^1.7.1",
+    "gulp-sass": "^3.1.0",
+    "run-sequence": "^1.2.2"
+  }
+}

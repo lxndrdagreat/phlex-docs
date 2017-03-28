@@ -4,9 +4,9 @@
 
 <h1>Update Log</h1>
 
-{% for update in posts %}
+{% for update in posts | sort(attribute='date', reverse=True)%}
     <div class="update">
-        <h2><a href="{{update.href}}">{{ update.title }}</a></h2>
+        <h2><span class="update__date">{{ update.date }}</span><a href="{{update.href}}">{{ update.title }}</a></h2>
     </div>
 {% endfor %}
 

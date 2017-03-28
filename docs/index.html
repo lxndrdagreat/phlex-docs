@@ -2,55 +2,21 @@
 <head>
     <title>Welcome to Phlex</title>
 
-    <style>
-    html, body {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        color: #333;
-        background-color: #ffffff;
-        font-family: Helvetica, sans-serif;
-        width: 100%;
-    }
-
-    body {
-        padding: 1em;
-    }
-
-    a {
-        color: #0044aa;
-        font-weight: 600;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-        color: #0055bb;
-    }
-
-    page {
-        display: block;
-        max-width: 960px;
-        margin: 0 auto;
-    }
-
-    pre {
-        background-color: #222222;
-        color: #ddd;
-        padding: 0;
-        padding-left: 1em;
-        border-left: 2px solid #111187;
-        box-sizing: border-box;
-        overflow: auto;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
+    <nav>
+        <ul class="nav-top">
+            <li><a href="/">Home</a></li>
+            <li><a href="/updates.html">Updates</a></li>
+            <li><a href="/getphlex.html">Get Phlex</a></li>
+        </ul>
+    </nav>
     <page>
     
 <h1>Phlex</h1>
 <p>Thanks for your interesting in Phlex! This documentation is in the very early
 stages, so please be patient while it is being worked on.</p>
-<p>For now, check out the repo <a href="https://github.com/lxndrdagreat/phlex">here</a>.</p>
 <h2>What is Phlex?</h2>
 <p>Phlex is a tool that takes files and generates static HTML pages from them.</p>
 <p><em>So... it's just another static site generator?</em></p>
@@ -118,7 +84,7 @@ a hundred (<em>or more!</em>) posts in a subfolder called "posts".</p>
 command in the <code>context</code> block. It will do a search for the "posts" folder
 and will collect the page data from the pages inside that folder, storing
 that information as an array in the <code>posts</code> variable.</p>
-<p>Then, the template engine could do something like the following:</p>
+<p><strong>Then, the template engine could do something like the following:</strong></p>
 <pre><code>&lt;h1&gt;This is my blog about HTML!&lt;/h1&gt;
 
 &lt;h2&gt;Here are the posts I have written!&lt;/h2&gt;
@@ -129,10 +95,11 @@ that information as an array in the <code>posts</code> variable.</p>
     &lt;/div&gt;
 {% endfor %}
 </code></pre>
-<p>If you are unfamiliar with Jinja2's templating, you can read the documentation
-<a href="http://jinja.pocoo.org/docs/2.9/">here</a>.</p>
-<h2>Update Log</h2>
-<p>Check out the updates <a href="updates.html">here</a></p>
+<p><em>If you are unfamiliar with Jinja2's templating, you can read the documentation
+<a href="http://jinja.pocoo.org/docs/2.9/">here</a>.</em></p>
+<p>When Phlex runs, it sees that the "posts.yd" file wants the data from all of
+the files in the "posts" directory, and it will go and fetch that data, making
+it available to the template engine when it is rendering the "posts.html" file.</p>
 
 
     </page>

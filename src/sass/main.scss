@@ -1,0 +1,19 @@
+@import 'vars';
+@import 'base';
+@import 'nav';
+
+pre {
+    background-color: #222222;
+    color: #ddd;
+    padding: 0;
+    padding-left: 1em;
+    border-left: 2px solid #111187;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.update__date {
+    margin-right: 0.5em;
+    padding-right: 0.5em;
+    border-right: 1px solid #333;
+}

@@ -1,0 +1,31 @@
+==>context
+template: index
+title: Get Phlex
+<==context
+
+# Get Phlex
+
+## From PyPi
+
+To get the latest version of Phlex, use `pip`:
+
+    $ pip install phlex
+
+## From the Repository
+
+To get the latest release, use:
+
+    $ pip install git+https://github.com/lxndrdagreat/phlex.git
+
+To get the latest development build, use:
+
+    $ pip install git+https://github.com/lxndrdagreat/phlex.git@develop
+
+## Building
+
+- Clone the repository
+- Install dependencies
+
+To use Phlex locally, you can use:
+
+    $ pip install --editable /path/to/phlex

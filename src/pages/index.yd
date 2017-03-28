@@ -8,8 +8,6 @@ title: Welcome to Phlex
 Thanks for your interesting in Phlex! This documentation is in the very early
 stages, so please be patient while it is being worked on.
 
-For now, check out the repo [here](https://github.com/lxndrdagreat/phlex).
-
 ## What is Phlex?
 
 Phlex is a tool that takes files and generates static HTML pages from them.
@@ -96,21 +94,21 @@ command in the `context` block. It will do a search for the "posts" folder
 and will collect the page data from the pages inside that folder, storing
 that information as an array in the `posts` variable.
 
-Then, the template engine could do something like the following:
+**Then, the template engine could do something like the following:**
 
     <h1>This is my blog about HTML!</h1>
 
     <h2>Here are the posts I have written!</h2>
-    
+
     {% for post in posts %}
         <div class="post">
             <a href="{{ post.href }}">{{ post.title }}</a>
         </div>
     {% endfor %}
 
-If you are unfamiliar with Jinja2's templating, you can read the documentation
-[here](http://jinja.pocoo.org/docs/2.9/).
+_If you are unfamiliar with Jinja2's templating, you can read the documentation
+[here](http://jinja.pocoo.org/docs/2.9/)._
 
-## Update Log
-
-Check out the updates [here](updates.html)
+When Phlex runs, it sees that the "posts.yd" file wants the data from all of
+the files in the "posts" directory, and it will go and fetch that data, making
+it available to the template engine when it is rendering the "posts.html" file.
